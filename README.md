@@ -28,17 +28,11 @@ We created this demo to simulate the hacking process and developed a tool to tra
 
 We have three wallets representing: token issuer, CEX and hacker.
 
-| role |node |wallet |wallet address |
-
-|----------------|-------------------------------|----------------------|--------------------------------------------|
-
-|`token issuer` |`geth-miner1` |`creator_wallet` |`0x8cc5a1a0802db41db826c2fcb72423744338dcb0`|
-
-|`CEX` |`geth-miner2` |`CEX_wallet` |`0x3590aca93338b0721966a8d0c96ebf2c4c87c544`|
-
-|`hacker` |`geth-node` |`hacker_wallet` |`0x4d980799b71ae28fde37b8cadbe56ef8305b1727`|
-
-  
+|role            |wallet            |wallet address                              |
+|----------------|------------------|--------------------------------------------|
+|`token issuer`  |`creator-wallet`  |`0x8cc5a1a0802db41db826c2fcb72423744338dcb0`|
+|`CEX`           |`cex-wallet"`     |`0x3590aca93338b0721966a8d0c96ebf2c4c87c544`|
+|`hacker`        |`hacker-wallet`   |`0x4d980799b71ae28fde37b8cadbe56ef8305b1727`| 
 
 Although we can use one wallet to simulate the operation by switching different wallet accounts, we still use three wallets for clarification.
 
@@ -96,7 +90,7 @@ $ docker exec -it creator-wallet /bin/sh
 
 DX token issue
 
-Token issue smart contract is at `/creator_wallet/contracts/Migrations.sol`. Run this command to issue DX token.
+Token issue smart contract is at `/contracts/Migrations.sol`. Run this command to issue DX token.
 
 ```
 $ truffle migrate --network private
