@@ -68,17 +68,14 @@ $ cd token-tracking
 $ docker-compose up -d
 ```
 
-3. Wait for all containers to start.
-
-  
+2. Wait for all containers to start.
+ 
 
 You can rely on the output of `docker ps` to see the state of services.
-
   
 
-4. Deploy Token to private Ethereum network
-
-  
+3. Deploy Token to private Ethereum network
+ 
 
 Explained in the design section, we use `truffle` and `HD wallet` in this project. Let's start a terminal and connect to `creator-wallet` container to issue tokens.
 
@@ -108,14 +105,12 @@ truffle(private)> let instance = await DxToken.deployed();
 truffle(private)> instance.transfer('3590aca93338b0721966a8d0c96ebf2c4c87c544', 5000000)
 ```
 
-5. Hack CEX
+4. Hack CEX
 
 
 A hacker could access CEX wallet to transfer tokens to his accounts. Let's simulate this process by running on another container which could access the CEX wallet. Now we start another terminal to connect `cex-wallet`.
 
 ```
-$ cd token-tracking
-
 $ docker exec -it cex-wallet /bin/sh
 ```
 
@@ -135,7 +130,7 @@ truffle(private)> instance.transfer('4d980799b71ae28fde37b8cadbe56ef8305b1727', 
 truffle(private)> instance.balanceOf('3590aca93338b0721966a8d0c96ebf2c4c87c544')
 ```
 
-6. Stoken token tracking
+5. Stoken token tracking
 
 For any transfer transaction, we can track them by monitor transactions/blocks using ethlogger and Splunk data platform.
 Go to [http://localhost:8000](http://localhost:8000) and login using user `admin` and password `changeme`.
@@ -144,7 +139,7 @@ Goto Dashboard and open `Hacked Token Transfer`. This dashboard will track and d
 
 With the enterprise license, we could setup alert sending email/message to notify token issuer for quick responses.
 
-7. Stolen tokens transfer
+6. Stolen tokens transfer
 
 Stolen tokens might be transferred to another CEX to trade or DEX to swap to other cryptocurrencies such as BTC/ETH/USDT etc. So we simulated this operation at hacker's wallet in the third docker container. Let's start the third terminal to connect to `hacker-wallet`.
 
@@ -180,7 +175,7 @@ Actually `0xbe0eb53f46cd790cd13851d5eff43d12404d33e8`belongs to Binance and `0xe
 
   
 
-8. Future work
+7. Future work
 
 
 `Hacked Token Transfer` only shows the basic stolen token activities, so we could do more sophisticated analysis such as anomaly account detection by machine learning algorithm and account linkage analysis.
